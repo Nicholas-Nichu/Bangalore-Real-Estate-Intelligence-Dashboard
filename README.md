@@ -13,7 +13,7 @@ The project covers the complete analytics pipeline including:
 
 ## Dashboard Preview
 
-![Dashboard Preview](dashboard/dashboard_screenshot.png)
+![Dashboard Preview](dashboard_screenshot.png)
 
 ---
 
