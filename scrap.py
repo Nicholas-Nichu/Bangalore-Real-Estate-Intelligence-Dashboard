@@ -66,3 +66,17 @@ import numpy as np
 df["SBA"]=df["SBA"].round().astype("Int64")
 df["SBA"]=np.floor(df["SBA"])
 df.to_sql("real_estate",engine,if_exists="append")
+
+from bs4 import BeautifulSoup
+url=requests.get('https://www.bankbazaar.com/pin-code/karnataka/bangalore.html').text
+soup=BeautifulSoup(url,'xml')
+x=soup.find_all('td',class_='align-middle [&:has([role=checkbox])]:pr-0 border-l p-2')
+yo=[]
+for i in x:
+    yo.append(i.text)
+yo2= []
+for i in range(0,len(yo),4):
+    yo2.append({"Place":yo[i],"Pincode":yo[i+1]})
+yo3=pd.DataFrame(yo2)
+yo3.to_sql("pincode",eng,if_exists="append")
+
